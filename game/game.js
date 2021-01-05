@@ -21,45 +21,10 @@ function imageLoadingDoneSoStartGame() {
     carReset();
 }
 
-function carReset() {
-    for (var eachRow = 0; eachRow < TRACK_ROWS; eachRow++) {
-        for (var eachCol = 0; eachCol < TRACK_COL; eachCol++) {
-            var arrayIndex = rowColToArrayIndex(eachCol, eachRow);
-            if (trackGrid[arrayIndex] == TRACK_PLAYER_START) {
-                trackGrid[arrayIndex] = TRACK_ROAD;
-                carAngle = -90 * Math.PI/180;
-                carX = eachCol * TRACK_W + TRACK_W / 2;
-                carY = eachRow * TRACK_H + TRACK_H / 2;
-            }
-        }
-    }
-}
-
 //function which update the status (refreshing)
 function updateAll() {
     moveAll();
     drawAll();
-}
-
-function carMove() {
-    carSpeed *= GROUND_SPEED_DECAY_MULT;
-
-    if(keyHeld_Gas){
-        carSpeed +=DRIVE_POWER;
-    }
-    if(keyHeld_Reverse){
-        carSpeed -=REVERSE_POWER;
-    }
-    if(keyHeld_TurnLeft){
-        carAngle -=TURN_RATE;
-    }
-    if(keyHeld_TurnRight){
-        carAngle +=TURN_RATE;
-    }
-
-    carX += Math.cos(carAngle) * carSpeed;
-    carY += Math.sin(carAngle) * carSpeed;
-   // carSpeed += -0.5;
 }
 
 function moveAll() {

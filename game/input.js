@@ -8,11 +8,6 @@ var keyHeld_Reverse= false;  //break
 var keyHeld_TurnLeft= false;
 var keyHeld_TurnRight= false;
 
-const GROUND_SPEED_DECAY_MULT =0.94;
-const DRIVE_POWER =0.5;
-const REVERSE_POWER =0.2;
-const TURN_RATE =0.03;
-
 var mouseX = 0;
 var mouseY = 0;
 
