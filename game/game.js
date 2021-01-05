@@ -2,41 +2,37 @@ console.log("arkanoid")
 
 var canvas, canvasContext;
 
-//DOM function will be called right after loading html file
-window.onload = function () {
+var blueCar = new carClass();
+
+window.onload = function() {
     canvas = document.getElementById('gameCanvas');
     canvasContext = canvas.getContext('2d');
 
-    colorText("LOADING IMAGES", canvas.width/2, canvas.height/2, "white");
+    colorRectangle(0,0, canvas.width,canvas.height, 'black');
+    colorText("LOADING IMAGES", canvas.width/2, canvas.height/2, 'white');
 
     loadImages();
 }
 
 function imageLoadingDoneSoStartGame() {
-    var framePerSecond = 30;
-    //refreshing 30 times per second
-    setInterval(updateAll, 1000 / framePerSecond);
+    var framesPerSecond = 30;
+    setInterval(updateAll, 1000/framesPerSecond);
 
     setupInput();
-    carReset();
+    blueCar.reset();
 }
 
-//function which update the status (refreshing)
 function updateAll() {
     moveAll();
     drawAll();
 }
 
 function moveAll() {
-    carMove();
-    carTrackHandling();
-}
-
-function rowColToArrayIndex(col, row) {
-    return col + TRACK_COL * row;
+    blueCar.move();
+    carTrackHandling(blueCar);
 }
 
 function drawAll() {
     drawTracks();
-    carDraw();
-}
+    blueCar.draw();
+} 
