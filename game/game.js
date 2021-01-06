@@ -1,8 +1,7 @@
-console.log("arkanoid")
-
 var canvas, canvasContext;
 
 var blueCar = new carClass();
+var greenCar = new carClass();
 
 window.onload = function() {
     canvas = document.getElementById('gameCanvas');
@@ -19,7 +18,8 @@ function imageLoadingDoneSoStartGame() {
     setInterval(updateAll, 1000/framesPerSecond);
 
     setupInput();
-    blueCar.reset();
+    blueCar.reset(blueCarPic);
+    greenCar.reset(greenCarPic);
 }
 
 function updateAll() {
@@ -29,10 +29,11 @@ function updateAll() {
 
 function moveAll() {
     blueCar.move();
-    carTrackHandling(blueCar);
+    greenCar.move();
 }
 
 function drawAll() {
     drawTracks();
     blueCar.draw();
+    greenCar.draw();
 } 
