@@ -18,6 +18,13 @@ function imageLoadingDoneSoStartGame() {
     setInterval(updateAll, 1000/framesPerSecond);
 
     setupInput();
+
+    loadLevel(levelOne);
+    loadLevel(levelTwo);
+}
+function loadLevel(whichLevel) {
+    trackGrid=whichLevel.slice();//slice do a copy by value one part of array to some part of another. slice(34)
+    // for example slice without any value inside will copy values since 0 to end of the array
     blueCar.reset(blueCarPic, "Blue Storm");
     greenCar.reset(greenCarPic, "Green Machine");
 }
